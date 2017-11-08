@@ -10,8 +10,8 @@ const mapDispatchToProps = {
   onTransactionAdd: addTransactionAsync,
 };
 
-const VisibleTransactions = connect(mapStateToProps, mapDispatchToProps)(
+const TransactionsListContainer = connect(mapStateToProps, mapDispatchToProps)(
   TransactionsList
 );
 
-export default VisibleTransactions;
+export default TransactionsListContainer;

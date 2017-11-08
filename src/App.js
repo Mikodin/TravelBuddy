@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import TransactionsList from './containers/TransactionsList.C';
 import LoginContainer from './containers/Login.C';
+import TransactionsHomeContainer from './containers/TransactionsHome.C';
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +13,14 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const skipLogin = localStorage.getItem('skipLogin');
+    this.setState({ skipLogin });
+  }
+
   skipLogin = () => {
     this.setState({ skipLogin: true });
+    localStorage.setItem('skipLogin', true);
   };
 
   login = isLoggedIn => {
@@ -25,7 +31,7 @@ class App extends Component {
     return (
       <div className="container App">
         {this.state.skipLogin || this.state.isLoggedIn ? (
-          <TransactionsList />
+          <TransactionsHomeContainer />
         ) : (
           <LoginContainer login={this.login} skipLogin={this.skipLogin} />
         )}

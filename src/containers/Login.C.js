@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fbLoginAsync } from '../actions/User.A';
+import { fbLogin } from '../actions/User.A';
 import Login from '../components/Login';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onLogin: fbLoginAsync,
+  onLogin: fbLogin,
 };
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -20,19 +20,19 @@ class Login extends Component {
   };
 
   loginToFb = (username, password) => {
-    this.props.onLogin({ username, password }).then(res => {
+    this.props.onLogin(username, password).then(res => {
       this.props.login(true);
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.loginToFb(this.state.username, this.state.password);
+  };
+
   render() {
     return (
-      <Form
-        onSubmit={e => {
-          e.preventDefault();
-          this.loginToFb(this.state.username, this.state.password);
-        }}
-      >
+      <Form onSubmit={this.handleSubmit}>
         <FormGroup>
           <Label for="emailInput">Email</Label>
           <Input
@@ -46,8 +46,9 @@ class Login extends Component {
         </FormGroup>
 
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="passwordInput">Password</Label>
           <Input
+            id="passwordInput"
             type="password"
             name="password"
             value={this.state.password}
@@ -57,7 +58,7 @@ class Login extends Component {
         </FormGroup>
 
         <Button color="primary" size="lg" block type="submit">
-          Login
+          Login (not yet hehe)
         </Button>
 
         <Button
