@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import VisibleTransactions from './containers/VisibleTransactions';
+
 class App extends Component {
+  addTrans = () => {
+    console.log('Add trans');
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Hello</h1>
+        <VisibleTransactions />
+        <button onClick={() => this.addTrans()}>Add trans</button>
       </div>
     );
   }
