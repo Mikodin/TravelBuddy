@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import VisibleTransactions from './containers/VisibleTransactions';
+import VisibleTransactions from './containers/TransactionsList.C';
 
 class App extends Component {
   addTrans = () => {
