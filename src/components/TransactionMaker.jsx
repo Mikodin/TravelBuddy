@@ -51,7 +51,6 @@ class TransactionMaker extends Component {
     this.setState({
       modal: !this.state.modal,
     });
-    this.props.updateCurrentFunds(this.props.user.currentFunds, -20);
   };
 
   render() {

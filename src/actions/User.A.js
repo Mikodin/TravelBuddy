@@ -18,6 +18,9 @@ export const updateCurrentFunds = (currentFunds, amountToModify) => {
     return new Promise((resolve, reject) => {
       const updatedFunds =
         Number.parseFloat(currentFunds) + Number.parseFloat(amountToModify);
+      console.log(currentFunds);
+      console.log(amountToModify);
+      console.log(updatedFunds);
       dispatch({ type: 'UPDATE_CURRENT_FUNDS', currentFunds: updatedFunds });
       resolve(true);
     });
