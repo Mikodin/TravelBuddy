@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
-import { Button, Input, Col, Row, Label, FormGroup } from 'reactstrap';
+import {
+  Button,
+  Input,
+  Col,
+  Row,
+  Label,
+  FormGroup,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 
 import '../App.css';
+import NewTransactionContainer from '../containers/NewTransaction.C';
 
 import {
   ConvertUsdToTarget,
@@ -15,6 +27,7 @@ class TransactionMaker extends Component {
     this.state = {
       showFundsInput: true,
       funds: 0,
+      modal: false,
     };
   }
 
@@ -34,17 +47,20 @@ class TransactionMaker extends Component {
     });
   };
 
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+    this.props.updateCurrentFunds(this.props.user.currentFunds, -20);
+  };
+
   render() {
     const { user, updateCurrentFunds, addTransactionsAsync } = this.props;
     return (
       <div className="transaction-maker">
         <Row className="container">
           <Col xs={4} className="no-padding">
-            <Button
-              size={'sm'}
-              color="danger"
-              onClick={() => updateCurrentFunds(user.currentFunds, -20)}
-            >
+            <Button size={'sm'} color="danger" onClick={this.toggle}>
               -
             </Button>
             <Button size={'sm'} color="secondary" onClick={this.toggleLock}>
@@ -90,6 +106,14 @@ class TransactionMaker extends Component {
             </Button>
           </Col>
         </Row>
+
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+        >
+          <NewTransactionContainer />
+        </Modal>
       </div>
     );
   }
