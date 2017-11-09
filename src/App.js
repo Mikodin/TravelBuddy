@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container App">
+      <div className="App">
         {this.state.skipLogin || this.state.isLoggedIn ? (
           <TransactionsHomeContainer />
         ) : (

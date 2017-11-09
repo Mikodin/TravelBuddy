@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Input, Col, Row, Label, FormGroup } from 'reactstrap';
 
+import '../App.css';
+
 import {
   ConvertUsdToTarget,
   PrettyPrintMoney,
@@ -26,29 +28,31 @@ class TransactionMaker extends Component {
   };
 
   toggleLock = () => {
-    this.setState({ showFundsInput: !this.state.showFundsInput });
+    this.setState({
+      showFundsInput: !this.state.showFundsInput,
+      funds: this.props.user.currentFunds,
+    });
   };
 
   render() {
     const { user, updateCurrentFunds, addTransactionsAsync } = this.props;
     return (
-      <div>
-        <Row>
-          <Col lg={1}>
+      <div className="transaction-maker">
+        <Row className="container">
+          <Col xs={4} className="no-padding">
             <Button
+              size={'sm'}
               color="danger"
               onClick={() => updateCurrentFunds(user.currentFunds, -20)}
             >
               -
             </Button>
-          </Col>
-
-          <Col lg={2}>
-            <Button color="secondary" onClick={this.toggleLock}>
+            <Button size={'sm'} color="secondary" onClick={this.toggleLock}>
               {this.state.showFundsInput ? 'Lock' : 'Unlock'}
             </Button>
           </Col>
-          <Col lg={8}>
+
+          <Col xs={6} className="no-padding">
             <Row>
               {this.state.showFundsInput ? (
                 <FormGroup>
@@ -62,7 +66,7 @@ class TransactionMaker extends Component {
                   />
                 </FormGroup>
               ) : (
-                <h3>$ {`${PrettyPrintMoney(user.currentFunds)}`}</h3>
+                <h4>$ {`${PrettyPrintMoney(user.currentFunds)}`}</h4>
               )}
             </Row>
             <Row>
@@ -74,9 +78,11 @@ class TransactionMaker extends Component {
               </h5>
             </Row>
           </Col>
-          <Col lg={1}>
+
+          <Col xs={1} className="no-padding">
             <Button
               disabled
+              size={'sm'}
               color="success"
               onClick={() => updateCurrentFunds(user.currentFunds, 20)}
             >
