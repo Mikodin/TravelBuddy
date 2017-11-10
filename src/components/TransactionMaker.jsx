@@ -1,16 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Input,
-  Col,
-  Row,
-  Label,
-  FormGroup,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
+import { Button, Input, Col, Row, FormGroup, Modal } from 'reactstrap';
 
 import '../App.css';
 import NewTransactionContainer from '../containers/NewTransaction.C';
@@ -55,7 +44,7 @@ class TransactionMaker extends Component {
   };
 
   render() {
-    const { user, updateCurrentFunds, addTransactionsAsync } = this.props;
+    const { user, updateCurrentFunds } = this.props;
     return (
       <div className="transaction-maker">
         <Row className="container">

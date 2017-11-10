@@ -1,19 +1,18 @@
 import React from 'react';
 
-const TransactionsList = ({ transactions, onTransactionAdd }) => {
-  const addTransaction = () => {
-    onTransactionAdd({ amount: 150, desc: 'Test' }).then(res =>
-      console.log(res)
-    );
-  };
+import {
+  ConvertUsdToTarget,
+  PrettyPrintMoney,
+} from '../utils/ExchangeRateUtil';
 
+const TransactionsList = ({ transactions, onTransactionAdd }) => {
   return (
     <div>
-      <button onClick={() => addTransaction()}>Add Xaction</button>
       <ul>
         {transactions.map(xAction => (
           <li key={xAction.amount}>
-            {xAction.desc} {xAction.amount}
+            {xAction.category} {xAction.desc} ${' '}
+            {PrettyPrintMoney(xAction.amount)}
           </li>
         ))}
       </ul>

@@ -6,7 +6,6 @@ import {
   Row,
   Label,
   FormGroup,
-  Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
@@ -64,7 +63,6 @@ class TransactionMaker extends Component {
   };
 
   render() {
-    const { user, updateCurrentFunds, addTransactionsAsync } = this.props;
     return (
       <div className="">
         <ModalHeader toggle={this.toggle}>Add Transaction</ModalHeader>
