@@ -12,7 +12,7 @@ const TransactionsList = ({ transactions, onTransactionAdd }) => {
         {transactions.map(xAction => (
           <li key={xAction.amount}>
             {xAction.category} {xAction.desc} ${' '}
-            {PrettyPrintMoney(xAction.amount)}
+            {PrettyPrintMoney(Number.parseFloat(xAction.amount))}
           </li>
         ))}
       </ul>

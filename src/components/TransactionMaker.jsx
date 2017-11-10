@@ -15,7 +15,7 @@ class TransactionMaker extends Component {
 
     this.state = {
       showFundsInput: true,
-      funds: 0,
+      funds: '',
       modal: false,
     };
   }

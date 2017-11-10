@@ -13,5 +13,5 @@ export function ConvertTargetToBase(amountJpy, rate) {
 }
 
 export function PrettyPrintMoney(amount) {
-  return amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+  return amount ? amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') : 0.0;
 }

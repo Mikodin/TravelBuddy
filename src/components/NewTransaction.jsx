@@ -9,6 +9,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  InputGroup,
+  InputGroupAddon,
 } from 'reactstrap';
 
 import '../App.css';
@@ -24,8 +26,8 @@ class TransactionMaker extends Component {
     super(props);
 
     this.state = {
-      costTarget: 0,
-      costBase: 0,
+      costTarget: '',
+      costBase: '',
       description: '',
       isTargetInput: true,
     };
@@ -73,41 +75,56 @@ class TransactionMaker extends Component {
               {this.state.isTargetInput ? (
                 <FormGroup>
                   <Label for="constInput">Cost</Label>
-                  <Input
-                    id="costInput"
-                    type="number"
-                    name="cost"
-                    value={this.state.costTarget}
-                    onChange={this.handleCostTargetChange}
-                    placeholder="¥ 4544.6"
-                  />
-                  <h5>
-                    {`$ ${PrettyPrintMoney(
-                      ConvertTargetToBase(this.state.costTarget, 113.49)
-                    )}`}
-                  </h5>
+                  <InputGroup>
+                    <InputGroupAddon>¥</InputGroupAddon>
+                    <Input
+                      id="costInput"
+                      type="number"
+                      name="cost"
+                      value={this.state.costTarget}
+                      onChange={this.handleCostTargetChange}
+                      placeholder="4544.6"
+                    />
+                  </InputGroup>
+                  <InputGroup>
+                    <InputGroupAddon>$</InputGroupAddon>
+                    <Input
+                      disabled
+                      value={`${PrettyPrintMoney(
+                        ConvertTargetToBase(this.state.costTarget, 113.49)
+                      )}`}
+                    />
+                  </InputGroup>
                 </FormGroup>
               ) : (
                 <FormGroup>
                   <Label for="constInput">Cost</Label>
-                  <Input
-                    id="costInput"
-                    type="number"
-                    name="cost"
-                    value={this.state.costBase}
-                    onChange={this.handleCostBaseChange}
-                    placeholder="$ 20.00"
-                  />
-                  <h5>
-                    {`¥ ${PrettyPrintMoney(
-                      ConvertUsdToTarget(this.state.costBase, 113.49)
-                    )}`}
-                  </h5>
+
+                  <InputGroup>
+                    <InputGroupAddon>$</InputGroupAddon>
+                    <Input
+                      id="costInput"
+                      type="number"
+                      name="cost"
+                      value={this.state.costBase}
+                      onChange={this.handleCostBaseChange}
+                      placeholder="20.00"
+                    />
+                  </InputGroup>
+                  <InputGroup>
+                    <InputGroupAddon>¥</InputGroupAddon>
+                    <Input
+                      disabled
+                      value={`${PrettyPrintMoney(
+                        ConvertUsdToTarget(this.state.costBase, 113.49)
+                      )}`}
+                    />
+                  </InputGroup>
                 </FormGroup>
               )}
             </Col>
 
-            <Col xs={3}>
+            <Col xs={3} style={{ marginTop: '48px' }}>
               <Button
                 color="primary"
                 onClick={() =>
@@ -133,7 +150,8 @@ class TransactionMaker extends Component {
               </FormGroup>
             </Col>
           </Row>
-
+        </ModalBody>
+        <ModalFooter>
           <Row>
             <Col xs={3}>
               <Button
@@ -149,9 +167,9 @@ class TransactionMaker extends Component {
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Food')}
+                onClick={() => this.handleSubmit('Alcohol')}
               >
-                Travel
+                Alcohol
               </Button>
             </Col>
 
@@ -159,7 +177,7 @@ class TransactionMaker extends Component {
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Food')}
+                onClick={() => this.handleSubmit('Lodging')}
               >
                 Lodging
               </Button>
@@ -169,17 +187,12 @@ class TransactionMaker extends Component {
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Food')}
+                onClick={() => this.handleSubmit('Travel')}
               >
-                Booze
+                Travel
               </Button>
             </Col>
           </Row>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={this.handleSubmit}>
-            Submit
-          </Button>
         </ModalFooter>
       </div>
     );
