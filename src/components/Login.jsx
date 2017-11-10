@@ -57,7 +57,7 @@ class Login extends Component {
           />
         </FormGroup>
 
-        <Button color="primary" size="lg" block type="submit">
+        <Button disabled color="primary" size="lg" block type="submit">
           Login (not yet hehe)
         </Button>
 

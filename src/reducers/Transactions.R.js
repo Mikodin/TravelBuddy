@@ -7,6 +7,7 @@ const transactions = (state = [], action) => {
           desc: action.desc,
           amount: action.amount,
           category: action.category,
+          date: action.date,
         },
       ];
 

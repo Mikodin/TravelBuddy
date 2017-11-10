@@ -5,3 +5,10 @@
 
 .no-padding {
 }
+
+.transaction-list {
+  min-height: 82vh;
+  max-height: 82vh;
+  overflow-y: auto;
+  background-color: lightsteelblue;
+}
