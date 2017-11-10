@@ -1,7 +1,4 @@
-const transactions = (
-  state = [{ amount: 100, desc: 'InitialXAction' }],
-  action
-) => {
+const transactions = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TRANSACTION':
       return [
@@ -9,6 +6,7 @@ const transactions = (
         {
           desc: action.desc,
           amount: action.amount,
+          category: action.category,
         },
       ];
 

@@ -4,11 +4,16 @@ export const addTransaction = ({ amount, desc }) => ({
   desc,
 });
 
-export const addTransactionAsync = ({ amount, desc }) => {
+export const addTransactionAsync = (amount, desc, category) => {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       console.log(amount);
-      dispatch(addTransaction({ amount, desc }));
+      dispatch({
+        type: 'ADD_TRANSACTION',
+        amount,
+        desc,
+        category,
+      });
       resolve(true);
     });
   };

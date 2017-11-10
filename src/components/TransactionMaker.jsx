@@ -49,6 +49,7 @@ class TransactionMaker extends Component {
 
   toggle = () => {
     this.setState({
+      showFundsInput: false,
       modal: !this.state.modal,
     });
   };
@@ -111,7 +112,7 @@ class TransactionMaker extends Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <NewTransactionContainer />
+          <NewTransactionContainer toggle={this.toggle} />
         </Modal>
       </div>
     );
