@@ -23,6 +23,9 @@ const user = (state = defaultState, action) => {
         currentFunds: action.currentFunds,
       });
 
+    case 'SET_USER':
+      return Object.assign({}, action.user);
+
     default:
       return state;
   }

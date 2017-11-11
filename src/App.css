@@ -11,6 +11,12 @@
 .no-padding {
 }
 
+.circle-btn {
+  width: 50%;
+  border-radius: 50%;
+  font-size: xx-large;
+}
+
 .transaction-list {
   min-height: 82vh;
   max-height: 82vh;

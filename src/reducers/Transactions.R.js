@@ -12,6 +12,9 @@ const transactions = (state = [], action) => {
         },
       ];
 
+    case 'SET_TRANSACTIONS':
+      return action.transactions;
+
     default:
       return state;
   }

@@ -28,10 +28,20 @@ export const updateCurrentFunds = (currentFunds, amountToModify) => {
 };
 
 export const setCurrentFunds = currentFunds => {
-  return dispatch => {
+  return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       const funds = Number.parseFloat(currentFunds);
       dispatch({ type: 'SET_CURRENT_FUNDS', currentFunds: funds });
+      localStorage.setItem('user', JSON.stringify(getState().user));
+      resolve(true);
+    });
+  };
+};
+
+export const setUser = user => {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      dispatch({ type: 'SET_USER', user });
       resolve(true);
     });
   };

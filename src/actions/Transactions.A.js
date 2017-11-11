@@ -34,6 +34,25 @@ export const addTransactionAsync = (amount, desc, category) => {
         date,
         icon,
       });
+
+      console.log(getState());
+      localStorage.setItem(
+        'transactions',
+        JSON.stringify(getState().transactions)
+      );
+      resolve(true);
+    });
+  };
+};
+
+export const setTransactions = transactions => {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      dispatch({
+        type: 'SET_TRANSACTIONS',
+        transactions,
+      });
+
       resolve(true);
     });
   };

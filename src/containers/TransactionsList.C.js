@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { addTransactionAsync } from '../actions/Transactions.A';
+import {
+  addTransactionAsync,
+  setTransactions,
+} from '../actions/Transactions.A';
 import TransactionsList from '../components/TransactionsList';
 
 const mapStateToProps = state => ({
@@ -8,6 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onTransactionAdd: addTransactionAsync,
+  setTransactions,
 };
 
 const TransactionsListContainer = connect(mapStateToProps, mapDispatchToProps)(

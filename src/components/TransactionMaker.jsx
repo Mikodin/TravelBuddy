@@ -23,6 +23,9 @@ class TransactionMaker extends Component {
 
   componentDidMount() {
     this.setState({ funds: this.props.user.currentFunds });
+    if (localStorage.getItem('user')) {
+      this.props.setUser(JSON.parse(localStorage.getItem('user')));
+    }
   }
 
   handleFundsChange = event => {
@@ -50,7 +53,12 @@ class TransactionMaker extends Component {
       <div className="transaction-maker">
         <Row className="container">
           <Col xs={4} className="no-padding">
-            <Button size={'sm'} color="danger" onClick={this.toggle}>
+            <Button
+              className="circle-btn"
+              size={'sm'}
+              color="danger"
+              onClick={this.toggle}
+            >
               -
             </Button>
             <Button size={'sm'} color="secondary" onClick={this.toggleLock}>
