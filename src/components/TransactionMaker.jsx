@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Input, Col, Row, FormGroup, Modal } from 'reactstrap';
+import FontAwesome from 'react-fontawesome';
 
 import '../App.css';
 import NewTransactionContainer from '../containers/NewTransaction.C';
@@ -14,7 +15,7 @@ class TransactionMaker extends Component {
     super(props);
 
     this.state = {
-      showFundsInput: true,
+      showFundsInput: false,
       funds: '',
       modal: false,
     };
@@ -53,7 +54,11 @@ class TransactionMaker extends Component {
               -
             </Button>
             <Button size={'sm'} color="secondary" onClick={this.toggleLock}>
-              {this.state.showFundsInput ? 'Lock' : 'Unlock'}
+              {this.state.showFundsInput ? (
+                <FontAwesome name="unlock" />
+              ) : (
+                <FontAwesome name="lock" />
+              )}
             </Button>
           </Col>
 

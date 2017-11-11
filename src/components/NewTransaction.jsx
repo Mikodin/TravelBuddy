@@ -12,6 +12,7 @@ import {
   InputGroup,
   InputGroupAddon,
 } from 'reactstrap';
+import FontAwesome from 'react-fontawesome';
 
 import '../App.css';
 
@@ -56,7 +57,7 @@ class TransactionMaker extends Component {
     );
 
     this.props.addTransactionAsync(
-      this.state.costBase,
+      Number.parseFloat(this.state.costBase),
       this.state.description,
       category
     );
@@ -130,7 +131,8 @@ class TransactionMaker extends Component {
                 onClick={() =>
                   this.setState({ isTargetInput: !this.state.isTargetInput })}
               >
-                Swap
+                <FontAwesome name="arrow-up" />
+                <FontAwesome name="arrow-down" />
               </Button>
             </Col>
           </Row>
@@ -151,45 +153,55 @@ class TransactionMaker extends Component {
             </Col>
           </Row>
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter style={{ justifyContent: 'flex-start' }}>
           <Row>
-            <Col xs={3}>
+            <Col xs={2}>
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Food')}
+                onClick={() => this.handleSubmit('food')}
               >
-                Food
+                <FontAwesome name="cutlery" />
               </Button>
             </Col>
 
-            <Col xs={3}>
+            <Col xs={2}>
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Alcohol')}
+                onClick={() => this.handleSubmit('alcohol')}
               >
-                Alcohol
+                <FontAwesome name="beer" />
               </Button>
             </Col>
 
-            <Col xs={3}>
+            <Col xs={2}>
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Lodging')}
+                onClick={() => this.handleSubmit('shopping')}
               >
-                Lodging
+                <FontAwesome name="shopping-cart" />
               </Button>
             </Col>
 
-            <Col xs={3}>
+            <Col xs={2}>
               <Button
                 className={'category-button'}
                 color="primary"
-                onClick={() => this.handleSubmit('Travel')}
+                onClick={() => this.handleSubmit('lodging')}
               >
-                Travel
+                <FontAwesome name="bed" />
+              </Button>
+            </Col>
+
+            <Col xs={2}>
+              <Button
+                className={'category-button'}
+                color="primary"
+                onClick={() => this.handleSubmit('travel')}
+              >
+                <FontAwesome name="plane" />
               </Button>
             </Col>
           </Row>

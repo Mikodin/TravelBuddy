@@ -8,6 +8,7 @@ const transactions = (state = [], action) => {
           amount: action.amount,
           category: action.category,
           date: action.date,
+          icon: action.icon,
         },
       ];
 

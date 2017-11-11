@@ -1,6 +1,11 @@
 .transaction-maker {
   background-color: lightgreen;
-  box-shadow: 0 6px 11px -6px black;
+  box-shadow: 0 2px 1px #777;
+}
+
+.transaction {
+  padding: 15px 5px 15px 5px;
+  box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
 }
 
 .no-padding {
@@ -10,5 +15,4 @@
   min-height: 82vh;
   max-height: 82vh;
   overflow-y: auto;
-  background-color: lightsteelblue;
 }
